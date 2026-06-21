@@ -2,6 +2,12 @@ import { useState, useEffect, type ReactNode } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, MessageCircle, Menu, X, ChevronRight, MapPin, Phone } from 'lucide-react';
 
+const PHONE_NUMBER = '+91-9328696221';
+const PHONE_HREF = 'tel:+919328696221';
+const WHATSAPP_URL = 'https://wa.me/919328696221';
+const INSTAGRAM_URL = 'https://www.instagram.com/studiomatteblack.in/';
+const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio%20Matte%20Black%204th%20Floor%20Capital%20Market%20F-51%20Ravapar%20Rd%20Morbi%20Gujarat%20363641';
+
 const InstagramIcon = ({ size = 18 }: { size?: number }) => (
   <svg
     width={size}
@@ -26,13 +32,13 @@ const PROJECTS = [
     title: "The Monolith Office",
     category: "Commercial",
     description: "Compact office designed with maximum spatial efficiency and natural light.",
-    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
+    image: "/assets/monolith-office.jpg"
   },
   {
     title: "Shadow & Light House",
     category: "Residential",
     description: "A private sanctuary playing with deep textures and rhythmic apertures.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+    image: "/assets/shadow-light-house.jpg"
   }
 ];
 
@@ -40,23 +46,22 @@ const SERVICES = [
   {
     title: "Residential Design",
     description: "Homes designed around how you live — planned for comfort, light, and longevity.",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800"
+    image: "/assets/residential-design.jpg"
   },
   {
     title: "Commercial & Office Spaces",
     description: "Workspaces that reflect brand identity while maximising efficiency and flow.",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800"
+    image: "/assets/commercial-office.jpg"
   },
   {
     title: "Landscape Design",
     description: "Outdoor environments shaped by context, climate, and natural movement.",
-    image: "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800"
+    image: "/assets/landscaping.jpeg"
   },
   {
     title: "Exhibition & Display Design",
     description: "Spatial experiences that communicate brand stories through form, material, and light.",
-    // Updated: Contemporary high-end architectural exhibition stall matching the "Acrylo" visual style
-    image: "https://images.unsplash.com/photo-1475721027785-f74dea327912?auto=format&fit=crop&q=80&w=800"
+    image: "/assets/exhibition.jpeg"
   }
 ];
 
@@ -65,13 +70,12 @@ const PROCESS = [
     step: "01", 
     title: "Understanding", 
     desc: "Listening to your needs, constraints, budget, and vision.", 
-    // Updated: Professional architectural client meeting and introduction
-    img: "https://images.unsplash.com/photo-1600880210836-8ef8fd265b21?auto=format&fit=crop&q=80&w=1000" 
+    img: "/assets/understanding.jpeg" 
   },
-  { step: "02", title: "Planning & Concept", desc: "Space planning and design direction that forms the project’s backbone.", img: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&q=80&w=600" },
-  { step: "03", title: "Design Development", desc: "Detailed design, materials, and visualisation.", img: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=600" },
-  { step: "04", title: "Technical Detailing", desc: "Execution-ready drawings aligned with site realities.", img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=600" },
-  { step: "05", title: "Site Coordination", desc: "Design support through execution for clarity and consistency.", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=600" },
+  { step: "02", title: "Planning & Concept", desc: "Space planning and design direction that forms the project’s backbone.", img: "/assets/planning-concept.jpg" },
+  { step: "03", title: "Design Development", desc: "Detailed design, materials, and visualisation.", img: "/assets/design-development.jpg" },
+  { step: "04", title: "Technical Detailing", desc: "Execution-ready drawings aligned with site realities.", img: "/assets/technical-detailing.jpg" },
+  { step: "05", title: "Site Coordination", desc: "Design support through execution for clarity and consistency.", img: "/assets/site-coordination.jpg" },
 ];
 
 // --- Sub-Components ---
@@ -111,9 +115,17 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-zinc-950/95 backdrop-blur-md py-4' : 'bg-transparent py-6 md:py-8'}`}>
       <div className="max-w-7xl mx-auto px-5 md:px-6 flex justify-between items-center">
-        <div className="text-lg md:text-xl font-bold tracking-tighter text-white uppercase">
-          Studio Matte Black
-        </div>
+        <a
+          href="#"
+          aria-label="Studio Matte Black home"
+          className="block h-12 w-48 md:h-14 md:w-60"
+        >
+          <img
+            src="/assets/logo2025-white-cropped.png"
+            alt="Studio Matte Black"
+            className="h-full w-full object-contain object-left"
+          />
+        </a>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-10 text-xs tracking-widest uppercase font-medium text-zinc-400">
@@ -147,10 +159,10 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="h-px w-full bg-zinc-800 my-4" />
-              <div className="flex gap-6 text-zinc-400">
+              <a href={PHONE_HREF} className="flex gap-6 text-zinc-400 hover:text-white transition-colors">
                 <Phone size={20} />
-                <span className="text-sm tracking-widest">+91-9328696221</span>
-              </div>
+                <span className="text-sm tracking-widest">{PHONE_NUMBER}</span>
+              </a>
             </div>
           </motion.div>
         )}
@@ -169,7 +181,7 @@ const Hero = () => {
       <motion.div style={{ y: y1, scale }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-transparent to-zinc-950/90 z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" 
+          src="/assets/hero-architecture.jpg" 
           alt="Hero Architecture" 
           className="w-full h-full object-cover grayscale-[20%]"
         />
@@ -191,12 +203,12 @@ const Hero = () => {
             Crafted with clarity, purpose, and timeless aesthetics.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-black font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-zinc-200 transition-all flex justify-center items-center gap-3 group">
+            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-white text-black font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-zinc-200 transition-all flex justify-center items-center gap-3 group">
               Start Your Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-white/10 transition-all">
+            </a>
+            <a href="#work" className="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-white/10 transition-all text-center">
               View Our Work
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -393,7 +405,7 @@ const ContactCTA = () => {
     <section id="contact" className="relative py-24 md:py-40 overflow-hidden bg-zinc-950">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000" 
+          src="/assets/cta-background.jpg" 
           alt="CTA Background" 
           className="w-full h-full object-cover opacity-20"
         />
@@ -405,12 +417,9 @@ const ContactCTA = () => {
           <h2 className="text-3xl md:text-7xl font-light text-white mb-8 md:mb-12 tracking-tight leading-tight">
             Let's build your <br className="hidden md:block" /> dream space together.
           </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
-            <button className="w-full sm:w-auto px-10 py-5 bg-white text-black font-semibold text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-zinc-200 transition-all">
-              Book a Consultation
-            </button>
+          <div className="flex justify-center">
             <a 
-              href="https://wa.me/919328696221" 
+              href={WHATSAPP_URL} 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white text-white font-semibold text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white/10 transition-all flex items-center justify-center gap-3"
@@ -430,8 +439,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-5 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 md:mb-20">
           <div className="md:col-span-2">
-            <div className="text-xl md:text-2xl font-bold tracking-tighter text-white uppercase mb-6">
-              Studio Matte Black
+            <div className="mb-6 h-20 w-72 md:h-24 md:w-80">
+              <img
+                src="/assets/logo2025-white-cropped.png"
+                alt="Studio Matte Black"
+                className="h-full w-full object-contain object-left"
+              />
             </div>
             <p className="text-zinc-500 font-light max-w-sm leading-relaxed mb-8 text-sm md:text-base">
               Architecture | Interiors | Landscape | Exhibition Design. <br />
@@ -439,14 +452,16 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               {[
-                { href: '#', label: 'Instagram', icon: <InstagramIcon size={18} /> },
+                { href: INSTAGRAM_URL, label: 'Instagram', icon: <InstagramIcon size={18} />, external: true },
                 { href: 'mailto:info@studiomatteblack.com', label: 'Email', icon: <Mail size={18} /> },
-                { href: 'https://wa.me/919328696221', label: 'WhatsApp', icon: <MessageCircle size={18} /> },
+                { href: WHATSAPP_URL, label: 'WhatsApp', icon: <MessageCircle size={18} />, external: true },
               ].map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="p-3 rounded-full border border-zinc-800 text-zinc-400 hover:text-white hover:border-white transition-all"
                 >
                   {item.icon}
@@ -471,22 +486,27 @@ const Footer = () => {
             <div className="space-y-6 text-zinc-500 font-light text-sm leading-relaxed">
               <div className="flex items-start gap-3">
                 <Phone size={14} className="mt-1 text-zinc-300 flex-shrink-0" />
-                <p>+91-9328696221</p>
+                <a href={PHONE_HREF} className="hover:text-white transition-colors">{PHONE_NUMBER}</a>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={14} className="mt-1 text-zinc-300 flex-shrink-0" />
-                <p>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
                   4th Floor, Capital market, F-51,<br />
                   Ravapar Rd, Ravapar, Morbi,<br />
                   Gujarat 363641
-                </p>
+                </a>
               </div>
             </div>
           </div>
         </div>
         
         <div className="pt-8 md:pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between gap-6 text-[9px] md:text-[10px] text-zinc-600 tracking-widest uppercase font-medium">
-          <p className="text-center md:text-left">© 2024 Studio Matte Black. All Rights Reserved.</p>
+          <p className="text-center md:text-left">© 2026 Studio Matte Black. All Rights Reserved.</p>
           <div className="flex justify-center md:justify-end gap-6 md:gap-8">
             <a href="#" className="hover:text-zinc-400">Privacy Policy</a>
             <a href="#" className="hover:text-zinc-400">Terms</a>
