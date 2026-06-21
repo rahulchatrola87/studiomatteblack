@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Mail, MessageCircle, Menu, X, ChevronRight, MapPin, Phone } from 'lucide-react';
 
 const PHONE_NUMBER = '+91-9328696221';
-const PHONE_HREF = 'tel:+919328696221';
 const WHATSAPP_URL = 'https://wa.me/919328696221';
 const INSTAGRAM_URL = 'https://www.instagram.com/studiomatteblack.in/';
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio%20Matte%20Black%204th%20Floor%20Capital%20Market%20F-51%20Ravapar%20Rd%20Morbi%20Gujarat%20363641';
@@ -158,10 +157,10 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="h-px w-full bg-zinc-800 my-4" />
-              <a href={PHONE_HREF} className="flex gap-6 text-zinc-400 hover:text-white transition-colors">
+              <div className="flex gap-6 text-zinc-400">
                 <Phone size={20} />
                 <span className="text-sm tracking-widest">{PHONE_NUMBER}</span>
-              </a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -182,7 +181,7 @@ const Hero = () => {
         <img 
           src="/assets/hero-architecture.jpg" 
           alt="Hero Architecture" 
-          className="w-full h-full object-cover grayscale-[20%]"
+          className="w-full h-full object-cover"
         />
       </motion.div>
 
@@ -245,7 +244,7 @@ const Services = () => {
                 <img 
                   src={service.image} 
                   alt={service.title} 
-                  className="w-full h-full object-cover opacity-50 md:opacity-40 grayscale group-hover:scale-110 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000 ease-out"
+                  className="w-full h-full object-cover opacity-60 md:opacity-40 md:grayscale md:group-hover:scale-110 md:group-hover:grayscale-0 md:group-hover:opacity-60 transition-all duration-1000 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
               </div>
@@ -337,7 +336,7 @@ const DesignProcess = () => {
               <div className="w-full md:w-1/2">
                 <FadeInWhenVisible>
                   <div className="relative aspect-video overflow-hidden">
-                    <img src={p.img} alt={p.title} className="w-full h-full object-cover grayscale md:hover:grayscale-0 transition-all duration-700" />
+                    <img src={p.img} alt={p.title} className="w-full h-full object-cover md:grayscale md:hover:grayscale-0 transition-all duration-700" />
                   </div>
                 </FadeInWhenVisible>
               </div>
@@ -477,7 +476,7 @@ const Footer = () => {
             <div className="space-y-6 text-zinc-500 font-light text-sm leading-relaxed">
               <div className="flex items-start gap-3">
                 <Phone size={14} className="mt-1 text-zinc-300 flex-shrink-0" />
-                <a href={PHONE_HREF} className="hover:text-white transition-colors">{PHONE_NUMBER}</a>
+                <p>{PHONE_NUMBER}</p>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={14} className="mt-1 text-zinc-300 flex-shrink-0" />
