@@ -134,7 +134,6 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <a href="#contact" className="text-white border-b border-white/30 hover:border-white transition-all">Start Your Project</a>
         </div>
 
         {/* Mobile Toggle */}
@@ -198,18 +197,10 @@ const Hero = () => {
             Thoughtfully Designed <br />
             <span className="italic font-serif">Architecture & Interiors</span>
           </h1>
-          <p className="text-base md:text-xl text-zinc-300 font-light mb-8 md:mb-10 max-w-xl leading-relaxed">
+          <p className="text-base md:text-xl text-zinc-300 font-light max-w-xl leading-relaxed">
             Residential, Commercial, Landscape & Exhibition Design. <br className="hidden md:block" />
             Crafted with clarity, purpose, and timeless aesthetics.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
-            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-white text-black font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-zinc-200 transition-all flex justify-center items-center gap-3 group">
-              Start Your Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#work" className="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-medium text-xs md:text-sm tracking-widest uppercase hover:bg-white/10 transition-all text-center">
-              View Our Work
-            </a>
-          </div>
         </motion.div>
       </div>
     </section>
