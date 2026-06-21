@@ -18,4 +18,9 @@ npm run preview
 
 The site is deployed to GitHub Pages at:
 
-https://www.studiomatteblack.in/
+https://rahulchatrola87.github.io/studiomatteblack/
+
+Custom domain `www.studiomatteblack.in` can be enabled after DNS is configured:
+
+- `www` CNAME → `rahulchatrola87.github.io`
+- Then add `public/CNAME` back and set Vite `base` to `/`
