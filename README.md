@@ -18,4 +18,4 @@ npm run preview
 
 The site is deployed to GitHub Pages at:
 
-https://rahulchatrola87.github.io/studiomatteblack/
+https://www.studiomatteblack.in/
