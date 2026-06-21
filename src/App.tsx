@@ -74,7 +74,7 @@ const PROCESS = [
   },
   { step: "02", title: "Planning & Concept", desc: "Space planning and design direction that forms the project’s backbone.", img: "/assets/planning-concept.jpg" },
   { step: "03", title: "Design Development", desc: "Detailed design, materials, and visualisation.", img: "/assets/design-development.jpg" },
-  { step: "04", title: "Technical Detailing", desc: "Execution-ready drawings aligned with site realities.", img: "/assets/technical-detailing.jpg" },
+  { step: "04", title: "Technical Detailing", desc: "Execution-ready drawings aligned with site realities.", img: "/assets/technical-detailing.png" },
   { step: "05", title: "Site Coordination", desc: "Design support through execution for clarity and consistency.", img: "/assets/site-coordination.jpg" },
 ];
 
